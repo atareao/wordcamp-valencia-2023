@@ -3,7 +3,7 @@ version: "3.7"
 services:
   yacht:
     image: selfhostedpro/yacht
-    container_name: portainer
+    container_name: yacht
     init: true
     restart: unless-stopped
     volumes:
@@ -12,8 +12,8 @@ services:
     networks:
       - proxy
     labels:
-      - traefik.http.services.portainer.loadbalancer.server.port=8000
-      - traefik.http.routers.portainer.rule=Host(`${FQDN}`)
+      - traefik.http.services.yacht.loadbalancer.server.port=8000
+      - traefik.http.routers.yacht.rule=Host(`${FQDN}`)
 
 volumes:
   data: {}
