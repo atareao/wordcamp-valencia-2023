@@ -34,8 +34,8 @@ services:
       - proxy
       - internal
     labels:
-      - "traefik.http.services.${FQDN}.loadbalancer.server.port=80"
-      - "traefik.http.routers.${FQDN}-https.rule=Host(`${FQDN}`)"
+      - "traefik.http.services.${ROUTER}.loadbalancer.server.port=80"
+      - "traefik.http.routers.${ROUTER}-https.rule=Host(`${FQDN}`)"
 
   mariadb:
     image: mariadb
