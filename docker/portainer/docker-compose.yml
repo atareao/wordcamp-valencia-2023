@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  portainer:
+    image: portainer/portainer-ce:alpine
+    container_name: portainer
+    init: true
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/data
+    networks:
+      - proxy
+    labels:
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
+      - traefik.http.routers.portainer-secure.rule=Host(`${FQDN}`)
+
+volumes:
+  data: {}
+
+networks:
+  proxy:
+    external: true
