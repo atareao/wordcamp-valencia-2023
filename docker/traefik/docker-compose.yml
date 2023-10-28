@@ -24,10 +24,10 @@ services:
       - logs:/var/log/traefik
     labels:
       - traefik.http.services.traefik.loadbalancer.server.port=80
-      - traefik.http.routers.traefik-secure.entrypoints=websecure
-      - traefik.http.routers.traefik-secure.rule=Host(`${FQDN}`)
-      - traefik.http.routers.traefik-secure.middlewares=myauth@file
-      - traefik.http.routers.traefik-secure.service=api@internal
+      - traefik.http.routers.traefik.entrypoints=websecure
+      - traefik.http.routers.traefik.rule=Host(`${FQDN}`)
+      - traefik.http.routers.traefik.middlewares=myauth@file
+      - traefik.http.routers.traefik.service=api@internal
 
 volumes:
   logs: {}

@@ -13,7 +13,7 @@ services:
       - proxy
     labels:
       - traefik.http.services.portainer.loadbalancer.server.port=9000
-      - traefik.http.routers.portainer-secure.rule=Host(`${FQDN}`)
+      - traefik.http.routers.portainer.rule=Host(`${FQDN}`)
 
 volumes:
   data: {}
