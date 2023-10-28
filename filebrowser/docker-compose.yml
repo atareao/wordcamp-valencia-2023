@@ -18,6 +18,8 @@ services:
       FB_DATABASE: "/database/filebrowser.db"
       FB_LOG: "stdout"
       FB_ROOT: "/srv"
+      FB_USERNAME: ${FB_USER}
+      FB_PASSWORD: ${FB_PASS}
 
     labels:
       - traefik.http.services.filebrowser.loadbalancer.server.port=80
