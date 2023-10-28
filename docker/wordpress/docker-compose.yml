@@ -30,9 +30,6 @@ services:
       traefik.http.services.wordpress.loadbalancer.server.port: 80
       traefik.http.routers.wordpress-https.rule: Host(`${FQDN}`)
 
-  wpconfig:
-    image: atareao/wpconfig:v0.1.0
-
   mariadb:
     image: mariadb
     restart: always
