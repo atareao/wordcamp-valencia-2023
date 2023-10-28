@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    restart: unless-stopped
+    init: true
+    networks:
+      - proxy
+    volumes:
+      - data:/srv
+      - db:/database
+    environment:
+      FB_PORT: "80"
+      FB_ADDRESS: ""
+      FB_BASEURL: ""
+      FB_DATABASE: "/database/filebrowser.db"
+      FB_LOG: "stdout"
+      FB_ROOT: "/srv"
+
+    labels:
+      - traefik.http.services.filebrowser.loadbalancer.server.port=80
+      - traefik.http.routers.filebrowser.rule=Host(`${FQDN}`)
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  db: {}
+  data:
+    external: true
