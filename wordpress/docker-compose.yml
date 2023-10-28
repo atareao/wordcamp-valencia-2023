@@ -15,15 +15,15 @@ services:
       WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
       WORDPRESS_CONFIG_EXTRA: |
         // adjust Redis host and port if necessary 
-        define( 'WP_REDIS_HOST', 'redis' );
-        define( 'WP_REDIS_PORT', 6379 );
+        define( 'WP_REDIS_HOST', '${WP_REDIS_HOST}' );
+        define( 'WP_REDIS_PORT', ${WP_REDIS_PORT} );
         // change the prefix and database for each site to avoid cache data collisions
         define( 'WP_REDIS_PREFIX', '${FQDN}' );
-        define( 'WP_REDIS_DATABASE', 0 ); // 0-15
-        
+        define( 'WP_REDIS_DATABASE', ${WP_REDIS_DATABASE} ); // 0-15
+
         // reasonable connection and read+write timeouts
-        define( 'WP_REDIS_TIMEOUT', 1 );
-        define( 'WP_REDIS_READ_TIMEOUT', 1 );
+        define( 'WP_REDIS_TIMEOUT', ${WP_REDIS_TIMEOUT} );
+        define( 'WP_REDIS_READ_TIMEOUT', ${WP_REDIS_READ_TIMEOUT} );
     volumes:
       - wordpress:/var/www/html
       #- ./upgrade:/var/www/html/wp-content/upgrade
