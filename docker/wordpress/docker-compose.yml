@@ -13,9 +13,11 @@ services:
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${DB_NAME}
+    volumes_from:
+      - wpconfig
     volumes:
       - wordpress:/var/www/html
-      - config/wp-config.php:/var/www/html/wp-config.php
+      #- config/wp-config.php:/var/www/html/wp-config.php
       #- ./upgrade:/var/www/html/wp-content/upgrade
       #- ./plugins:/var/www/html/wp-content/plugins
       #- ./themes:/var/www/html/wp-content/themes
@@ -28,6 +30,9 @@ services:
     labels:
       traefik.http.services.wordpress.loadbalancer.server.port: 80
       traefik.http.routers.wordpress-https.rule: Host(`${FQDN}`)
+
+  wpconfig:
+    image: atareao/wpconfig:v0.1.0
 
   mariadb:
     image: mariadb
