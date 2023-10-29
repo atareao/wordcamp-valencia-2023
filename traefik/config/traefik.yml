@@ -25,7 +25,7 @@ serversTransport:
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
-    exposedByDefault: true
+    exposedByDefault: false
     network: proxy
   file:
     filename: /dynamic.yml

@@ -21,6 +21,7 @@ services:
       FB_USERNAME: ${FB_USER}
       FB_PASSWORD: ${FB_PASS}
     labels:
+      - traefik.enable=true
       - traefik.http.services.filebrowser.loadbalancer.server.port=80
       - traefik.http.routers.filebrowser.rule=Host(`${FQDN}`)
 

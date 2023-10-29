@@ -16,6 +16,7 @@ services:
       - proxy
       - internal
     labels:
+      - traefik.enable=true
       - traefik.http.services.umami.loadbalancer.server.port=3000
       - traefik.http.routers.umami.rule=Host(`${FQDN}`)
   db:
