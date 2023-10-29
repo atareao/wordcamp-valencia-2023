@@ -95,7 +95,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.${ROUTER}-myadmin.loadbalancer.server.port=80"
-      - "traefik.http.routers.${ROUTER}-myadmin-https.rule=Host(`phpmyadmin.${FQDN}`)"
+      - "traefik.http.routers.${ROUTER}-myadmin-https.rule=Host(`${FQDN2}`)"
 
 volumes:
   wordpress: {}
