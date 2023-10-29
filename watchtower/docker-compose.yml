@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    init: true
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./config.json:/config.json
+    networks:
+      - internal
+
+networks:
+  internal: {}
