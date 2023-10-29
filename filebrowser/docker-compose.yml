@@ -10,6 +10,7 @@ services:
       - proxy
     volumes:
       - srv:/srv
+      - share:/share
       - db:/database
     environment:
       FB_PORT: "80"
@@ -32,3 +33,5 @@ networks:
 volumes:
   db: {}
   srv: {}
+  share:
+    external: true
